@@ -1,12 +1,18 @@
 
 import './App.css'
+import Header from './components/Header/Header'
+import Recipes from './components/Recipes/Recipes'
 
 function App() {
- 
+
 
   return (
     <>
-      <h1>Chefs Table</h1>
+
+      <div className='w-[1170px] mx-auto'>
+        <Header></Header>
+        <Recipes></Recipes>
+      </div>
     </>
   )
 }

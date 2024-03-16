@@ -1,0 +1,7 @@
+.bg-img {
+    background: linear-gradient(#150B2B00, #150B2BE5), url(../../assets/images/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
