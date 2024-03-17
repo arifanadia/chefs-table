@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Cooker.css'
 
-const Cookers = ({ cookers }) => {
+const Cookers = ({ cookers, handlePreparing }) => {
 
     return (
         <div className="bg-base-100 border-2 border-gray-200 rounded-xl">
@@ -17,15 +17,17 @@ const Cookers = ({ cookers }) => {
                             <th>Calories</th>
                         </tr>
                     </thead>
-                    <tbody  className="bg-slate-200 ">
+                    <tbody >
                         {
-                            cookers.map((wantCook, index) => <tr key={index}>
+                            cookers.map((wantCook, index) => (
+                                <tr key={index}  className="bg-slate-200 ">
                                 <td>{index + 1}</td>
                                 <td>{wantCook.recipe_name}</td>
-                                <td>20 minutes</td>
-                                <td>400 Calories</td>
-                                <button className="px-4 py-2 text-center m-4 bg-primary rounded-full text-black tex-lg font-medium">Preparing</button>
-                            </tr>)
+                                <td>{wantCook.preparing_time } minutes</td>
+                                <td>{wantCook.calories} Calories</td>
+                                <button onClick={() => handlePreparing(wantCook.recipe_id)} className="px-4 py-2 text-center m-4 bg-primary rounded-full text-black tex-lg font-medium">Preparing</button>
+                            </tr>
+                            ))
                         }
                     </tbody>
 
@@ -67,7 +69,10 @@ const Cookers = ({ cookers }) => {
 };
 
 Cookers.propTypes = {
-    cookers: PropTypes.object.isRequired,
+    cookers: PropTypes.array.isRequired,
+    handlePreparing: PropTypes.func,
+    
+    
 
 }
 

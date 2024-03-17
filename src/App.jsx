@@ -10,7 +10,7 @@ function App() {
   return (
     <>
 
-      <div className='w-[1170px] mx-auto'>
+      <div className='md:w-[1170px] md:mx-auto mx-4' >
         <Header></Header>
         <Recipes></Recipes>
         
