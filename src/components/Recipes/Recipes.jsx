@@ -10,6 +10,15 @@ const Recipes = () => {
     const [cookers, setCookers] = useState([]);
     const [currentCook, setCurrentCook] = useState([]);
 
+    
+    useEffect(() => {
+        fetch('recipes.json')
+            .then(res => res.json())
+            .then(data => setRecipes(data))
+
+
+    }, [])
+
     const handleWantToCook =(cook) => {
         const isExists = cookers.find (newRecipe => newRecipe.recipe_id == cook.recipe_id);
         if(!isExists){
@@ -32,13 +41,7 @@ const Recipes = () => {
 
 
 
-    useEffect(() => {
-        fetch('recipes.json')
-            .then(res => res.json())
-            .then(data => setRecipes(data))
-
-
-    }, [])
+    
     return (
         <div className="my-20">
             <div className="text-center ">

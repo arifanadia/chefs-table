@@ -32,9 +32,7 @@ const Cookers = ({ cookers, handlePreparing, currentCook }) => {
 
                     </tbody>
 
-
                 </table>
-
 
 
             </div>
@@ -67,14 +65,13 @@ const Cookers = ({ cookers, handlePreparing, currentCook }) => {
                                 ))
                             }
 
-
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td >Total time =  minutes</td>
-                                <td>Total Calories = Calories</td>
+                                <td >Total time ={currentCook.reduce((p,c)=>p + c.preparing_time,0)}  minutes</td>
+                                <td>Total Calories ={currentCook.reduce((p,c)=>p + c.calories,0)} Calories</td>
                             </tr>
                         </tfoot>
                     </table>
