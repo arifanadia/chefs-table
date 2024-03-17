@@ -8,22 +8,26 @@ import 'react-toastify/dist/ReactToastify.css';
 const Recipes = () => {
     const [recipes, setRecipes] = useState([]);
     const [cookers, setCookers] = useState([]);
+    const [currentCook, setCurrentCook] = useState([]);
 
     const handleWantToCook =(cook) => {
         const isExists = cookers.find (newRecipe => newRecipe.recipe_id == cook.recipe_id);
         if(!isExists){
             setCookers([...cookers, cook])
 
+            toast.success("Recipe added");
         }
         else{
-            toast.info("this item are already selected");
+            toast.warn("this item are already selected");
         }
      
     }
 
-    const handlePreparing = (preparing) => {
-        const startPreparing = cookers.filter(newRecipe => newRecipe.recipe_id !== preparing);
-        setCookers([startPreparing])
+    const handlePreparing = (id ,cook) => {
+        const startPreparing = cookers.filter(newRecipe => newRecipe.recipe_id !== id);
+        setCookers(startPreparing);
+        const newCurrentCook = [...currentCook,cook];
+        setCurrentCook(newCurrentCook)
     }
 
 
@@ -49,7 +53,7 @@ const Recipes = () => {
 
                     }
                 </div>
-               <div> <Cookers cookers= {cookers} handlePreparing={handlePreparing}></Cookers></div>
+               <div> <Cookers currentCook={currentCook} cookers= {cookers} handlePreparing={handlePreparing}></Cookers></div>
                 <ToastContainer />
 
             </div>
